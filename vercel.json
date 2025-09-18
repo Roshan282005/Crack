@@ -3,5 +3,20 @@
     "env": {
       "NPM_FLAGS": "--legacy-peer-deps"
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "smart-traffic/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "smart-traffic/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "smart-traffic/dist/$1"
+    }
+  ]
 }
